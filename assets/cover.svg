@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"
      font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif">
-  <title>hk-report-parser — HKEX annual reports to source-traced JSON</title>
+  <title>hkfilings — HKEX annual reports to source-traced JSON</title>
 
   <!-- Background gradient -->
   <defs>
@@ -17,7 +17,7 @@
 
   <!-- ============ TITLE BLOCK ============ -->
   <text x="40" y="52" font-size="30" font-weight="700" fill="#0F766E"
-        letter-spacing="-0.5">hk-report-parser</text>
+        letter-spacing="-0.5">hkfilings</text>
   <text x="40" y="80" font-size="15" fill="#0F766E" opacity="0.78">
     HKEX annual reports → source-traced JSON, in 5 lines of Python
   </text>
@@ -158,7 +158,7 @@
   <!-- ============ BOTTOM CTA ============ -->
   <g transform="translate(400 388)" text-anchor="middle">
     <text font-size="13" fill="#0F766E" opacity="0.85">
-      <tspan font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-weight="600">pip install hk-report-parser</tspan>
+      <tspan font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-weight="600">pip install hkfilings</tspan>
       <tspan fill="#0F766E" opacity="0.4">  ·  </tspan>
       <tspan>Free tier: 20 tasks / month, no credit card</tspan>
     </text>

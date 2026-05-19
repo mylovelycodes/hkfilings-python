@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <title>hk-report-parser logo</title>
+
+  <!-- Rounded square background, brand teal -->
+  <rect width="128" height="128" rx="24" fill="#0D9488"/>
+
+  <!-- Document body with folded corner -->
+  <g transform="translate(34 26)">
+    <path
+      d="M0 5 Q0 0 5 0 H44 L62 18 V71 Q62 76 57 76 H5 Q0 76 0 71 Z"
+      fill="#FEFCE8"/>
+    <!-- Fold triangle -->
+    <path d="M44 0 V18 H62 Z" fill="#FDE68A"/>
+
+    <!-- Faint text lines (greyed out) -->
+    <rect x="8"  y="26" width="34" height="3"  rx="1.5" fill="#0F766E" opacity="0.30"/>
+    <rect x="8"  y="34" width="44" height="3"  rx="1.5" fill="#0F766E" opacity="0.30"/>
+
+    <!-- The highlighted "fact" line — the brand story -->
+    <rect x="4"  y="44" width="54" height="8"  rx="3"   fill="#F59E0B"/>
+    <!-- Source-page pin marker -->
+    <circle cx="60" cy="48" r="3.5" fill="#DC2626"/>
+    <circle cx="60" cy="48" r="1.2" fill="#FEF2F2"/>
+
+    <!-- More faint lines -->
+    <rect x="8"  y="58" width="28" height="3"  rx="1.5" fill="#0F766E" opacity="0.30"/>
+    <rect x="8"  y="66" width="40" height="3"  rx="1.5" fill="#0F766E" opacity="0.30"/>
+  </g>
+</svg>

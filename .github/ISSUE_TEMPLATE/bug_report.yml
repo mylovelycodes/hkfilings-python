@@ -1,0 +1,72 @@
+name: Bug report
+description: Something in the SDK behaves unexpectedly
+title: "[bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug!
+
+        **Before you submit**: if the bug is about a *parsed report being
+        wrong* (wrong number, missed segment, hallucinated signal), this
+        is a *parsing engine* issue, not an SDK issue. Please include the
+        `task_id` so we can triage on the SaaS side.
+
+  - type: input
+    id: version
+    attributes:
+      label: SDK version
+      description: "Output of `pip show hkfilings | grep Version`"
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "3.12.4"
+    validations:
+      required: true
+
+  - type: input
+    id: httpx
+    attributes:
+      label: httpx version
+      placeholder: "0.27.2"
+
+  - type: input
+    id: task_id
+    attributes:
+      label: Affected task_id (if parsing issue)
+      description: Leave blank if the bug isn't tied to a specific task.
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: A snippet we can paste and run.
+      render: python
+      placeholder: |
+        from hkfilings import HKFilingsClient
+        c = HKFilingsClient(api_key="ak_test_...")
+        # ... what fails ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the full traceback if there's an exception.
+      render: shell
+    validations:
+      required: true

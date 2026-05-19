@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://docs.hkfilings.app/python
+    about: Quickstart, API reference, and cookbook.
+  - name: Question / support
+    url: https://github.com/mylovelycodes/hkfilings-python/discussions
+    about: Ask in Discussions — issues are for confirmed bugs / feature requests.
+  - name: Parsing bug in a specific report
+    url: https://hkfilings.app/support
+    about: For "this number is wrong / this signal is hallucinated", open a SaaS support ticket with the task_id.
+  - name: Security vulnerability
+    url: https://github.com/mylovelycodes/hkfilings-python/security/advisories/new
+    about: Please do not report security issues publicly. See SECURITY.md.

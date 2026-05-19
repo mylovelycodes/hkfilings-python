@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"
+     font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif">
+  <title>hk-report-parser — HKEX annual reports to source-traced JSON</title>
+
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F0FDFA"/>
+      <stop offset="1" stop-color="#CCFBF1"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0F766E" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="400" fill="url(#bg)"/>
+
+  <!-- ============ TITLE BLOCK ============ -->
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#0F766E"
+        letter-spacing="-0.5">hk-report-parser</text>
+  <text x="40" y="80" font-size="15" fill="#0F766E" opacity="0.78">
+    HKEX annual reports → source-traced JSON, in 5 lines of Python
+  </text>
+
+  <!-- ============ LEFT: PDF DOCUMENT ============ -->
+  <g transform="translate(60 130)" filter="url(#soft-shadow)">
+    <!-- Page -->
+    <rect x="0" y="0" width="190" height="230" rx="6" fill="#FFFFFF"
+          stroke="#0F766E" stroke-width="1.2" stroke-opacity="0.35"/>
+    <!-- Folded corner -->
+    <path d="M168 0 L190 22 L168 22 Z" fill="#E0F2F1"/>
+    <path d="M168 0 L168 22 L190 22" fill="none" stroke="#0F766E"
+          stroke-width="0.8" stroke-opacity="0.35"/>
+
+    <!-- Document title bar -->
+    <text x="16" y="28" font-size="11" font-weight="600" fill="#0F766E">
+      9988.HK · Annual Report 2026
+    </text>
+    <line x1="16" y1="36" x2="174" y2="36" stroke="#94A3B8" stroke-width="0.5"/>
+
+    <!-- Body text lines (grey placeholders) -->
+    <g fill="#CBD5E1">
+      <rect x="16" y="46" width="120" height="3.5" rx="1.75"/>
+      <rect x="16" y="56" width="150" height="3.5" rx="1.75"/>
+      <rect x="16" y="66" width="100" height="3.5" rx="1.75"/>
+      <rect x="16" y="76" width="135" height="3.5" rx="1.75"/>
+    </g>
+
+    <!-- THE highlighted line (the brand promise) -->
+    <rect x="12" y="92" width="166" height="14" rx="3" fill="#FEF3C7"/>
+    <rect x="12" y="92" width="166" height="14" rx="3" fill="none"
+          stroke="#F59E0B" stroke-width="1"/>
+    <text x="18" y="103" font-size="8.5" fill="#78350F" font-weight="600">
+      Revenue increased to RMB245,864 million
+    </text>
+
+    <!-- More body lines -->
+    <g fill="#CBD5E1">
+      <rect x="16" y="116" width="140" height="3.5" rx="1.75"/>
+      <rect x="16" y="126" width="115" height="3.5" rx="1.75"/>
+      <rect x="16" y="136" width="155" height="3.5" rx="1.75"/>
+      <rect x="16" y="146" width="100" height="3.5" rx="1.75"/>
+      <rect x="16" y="156" width="130" height="3.5" rx="1.75"/>
+      <rect x="16" y="166" width="145" height="3.5" rx="1.75"/>
+      <rect x="16" y="176" width="105" height="3.5" rx="1.75"/>
+      <rect x="16" y="186" width="125" height="3.5" rx="1.75"/>
+    </g>
+
+    <!-- Page number footer -->
+    <text x="95" y="218" text-anchor="middle" font-size="9.5"
+          fill="#94A3B8" font-weight="500">p. 87</text>
+  </g>
+
+  <!-- ============ CENTER: ARROW + PIPELINE STAGES ============ -->
+  <g transform="translate(280 245)">
+    <!-- Arrow shaft -->
+    <line x1="0" y1="0" x2="220" y2="0" stroke="#0D9488"
+          stroke-width="3" stroke-linecap="round"/>
+    <!-- Arrow head -->
+    <path d="M 220 0 L 208 -7 L 208 7 Z" fill="#0D9488"/>
+
+    <!-- Pill labels above the arrow -->
+    <g font-size="10" fill="#0F766E" text-anchor="middle">
+      <g transform="translate(38 -22)">
+        <rect x="-32" y="-11" width="64" height="20" rx="10"
+              fill="#FFFFFF" stroke="#0D9488" stroke-width="1"/>
+        <text y="3" font-weight="600">13 validators</text>
+      </g>
+      <g transform="translate(110 -22)">
+        <rect x="-32" y="-11" width="64" height="20" rx="10"
+              fill="#FFFFFF" stroke="#0D9488" stroke-width="1"/>
+        <text y="3" font-weight="600">v1 schema</text>
+      </g>
+      <g transform="translate(182 -22)">
+        <rect x="-35" y="-11" width="70" height="20" rx="10"
+              fill="#FFFFFF" stroke="#0D9488" stroke-width="1"/>
+        <text y="3" font-weight="600">source-traced</text>
+      </g>
+    </g>
+
+    <!-- Anti-hallucination footer note -->
+    <text x="110" y="22" text-anchor="middle" font-size="10"
+          fill="#0F766E" opacity="0.7" font-weight="500">
+      page + bbox + evidence on every number
+    </text>
+  </g>
+
+  <!-- ============ RIGHT: JSON CODE BLOCK ============ -->
+  <g transform="translate(520 130)" filter="url(#soft-shadow)">
+    <rect x="0" y="0" width="240" height="230" rx="8" fill="#0F172A"/>
+
+    <!-- Window chrome dots -->
+    <circle cx="14" cy="14" r="3.5" fill="#EF4444"/>
+    <circle cx="26" cy="14" r="3.5" fill="#F59E0B"/>
+    <circle cx="38" cy="14" r="3.5" fill="#22C55E"/>
+    <text x="230" y="17" text-anchor="end" font-size="9"
+          fill="#64748B" font-family="ui-monospace, monospace">fact.json</text>
+
+    <line x1="0" y1="28" x2="240" y2="28" stroke="#1E293B" stroke-width="1"/>
+
+    <!-- JSON content -->
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+       font-size="11">
+      <text x="14" y="50" fill="#94A3B8">{</text>
+
+      <text x="26" y="66">
+        <tspan fill="#7DD3FC">"metric_key"</tspan><tspan fill="#94A3B8">: </tspan><tspan fill="#FBBF24">"revenue"</tspan><tspan fill="#94A3B8">,</tspan>
+      </text>
+      <text x="26" y="82">
+        <tspan fill="#7DD3FC">"value"</tspan><tspan fill="#94A3B8">: </tspan><tspan fill="#86EFAC">245864000000</tspan><tspan fill="#94A3B8">,</tspan>
+      </text>
+      <text x="26" y="98">
+        <tspan fill="#7DD3FC">"yoy_change"</tspan><tspan fill="#94A3B8">: </tspan><tspan fill="#86EFAC">0.0952</tspan><tspan fill="#94A3B8">,</tspan>
+      </text>
+      <text x="26" y="114">
+        <tspan fill="#7DD3FC">"source_page"</tspan><tspan fill="#94A3B8">: </tspan><tspan fill="#86EFAC">87</tspan><tspan fill="#94A3B8">,</tspan>
+      </text>
+      <text x="26" y="130">
+        <tspan fill="#7DD3FC">"source_text"</tspan><tspan fill="#94A3B8">:</tspan>
+      </text>
+      <text x="26" y="144" font-size="10">
+        <tspan fill="#FBBF24">  "Revenue for the year</tspan>
+      </text>
+      <text x="26" y="158" font-size="10">
+        <tspan fill="#FBBF24">   increased to RMB245,864</tspan>
+      </text>
+      <text x="26" y="172" font-size="10">
+        <tspan fill="#FBBF24">   million"</tspan><tspan fill="#94A3B8">,</tspan>
+      </text>
+      <text x="26" y="190">
+        <tspan fill="#7DD3FC">"confidence"</tspan><tspan fill="#94A3B8">: </tspan><tspan fill="#86EFAC">0.98</tspan>
+      </text>
+
+      <text x="14" y="208" fill="#94A3B8">}</text>
+    </g>
+  </g>
+
+  <!-- ============ BOTTOM CTA ============ -->
+  <g transform="translate(400 388)" text-anchor="middle">
+    <text font-size="13" fill="#0F766E" opacity="0.85">
+      <tspan font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-weight="600">pip install hk-report-parser</tspan>
+      <tspan fill="#0F766E" opacity="0.4">  ·  </tspan>
+      <tspan>Free tier: 20 tasks / month, no credit card</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+name: Feature request
+description: Suggest a new method, parameter, or behavior in the SDK
+title: "[feat]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This template is for *SDK ergonomics* requests. If you want a new
+        endpoint added to the backend (e.g. "expose XYZ data"), email
+        product@hkfilings.app instead — that's a service-side ask.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Explain the use case. We prioritize based on impact.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      description: Sketch what the method / parameter would look like.
+      render: python
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered

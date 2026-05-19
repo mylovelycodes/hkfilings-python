@@ -1,6 +1,6 @@
 <!-- prettier-ignore -->
 <p align="center">
-  <img src="assets/cover.png" alt="hkfilings — 把港股年报 PDF 变成可追溯的结构化 JSON" width="720">
+  <img src="https://raw.githubusercontent.com/mylovelycodes/hkfilings-python/main/assets/cover.png" alt="hkfilings — 把港股年报 PDF 变成可追溯的结构化 JSON" width="720">
 </p>
 
 <h1 align="center">hkfilings · 港股年报 / 中期报告 Python SDK</h1>
@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  <a href="README.md">English</a> · <b>中文</b><br>
+  <a href="https://github.com/mylovelycodes/hkfilings-python/blob/main/README.md">English</a> · <b>中文</b><br>
   <a href="#安装">安装</a> · <a href="#5-行跑通">5 行跑通</a> · <a href="#返回数据长这样">数据形态</a> · <a href="#实战案例">实战</a> · <a href="#api-一览">API</a> · <a href="#套餐和配额">套餐</a> · <a href="#faq">FAQ</a>
 </p>
 
@@ -80,7 +80,7 @@ for fact in report.facts:
   8 秒的 quickstart 演示，存为 assets/demo.gif，然后把下面的注释打开：
 
   <p align="center">
-    <img src="assets/demo.gif" alt="hkfilings 快速开始演示" width="720">
+    <img src="https://raw.githubusercontent.com/mylovelycodes/hkfilings-python/main/assets/demo.gif" alt="hkfilings 快速开始演示" width="720">
   </p>
 -->
 
@@ -184,7 +184,7 @@ with open("baba_2026_facts.csv", "wb") as fh:
     fh.write(client.facts_csv(task.task_id))
 ```
 
-更多可运行示例见 [`examples/`](examples/)。
+更多可运行示例见 [`examples/`](https://github.com/mylovelycodes/hkfilings-python/tree/main/examples)。
 
 ## API 一览
 
@@ -288,8 +288,8 @@ JSON Schema 契约公开发布，作为稳定性承诺。
 
 ## License
 
-[MIT](LICENSE)。漏洞披露见 [SECURITY.md](SECURITY.md)，贡献指南见
-[CONTRIBUTING.md](CONTRIBUTING.md)。
+[MIT](https://github.com/mylovelycodes/hkfilings-python/blob/main/LICENSE)。漏洞披露见 [SECURITY.md](https://github.com/mylovelycodes/hkfilings-python/blob/main/SECURITY.md)，贡献指南见
+[CONTRIBUTING.md](https://github.com/mylovelycodes/hkfilings-python/blob/main/CONTRIBUTING.md)。
 
 ---
 

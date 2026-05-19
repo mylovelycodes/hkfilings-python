@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] — 2026-05-19
+
+### Fixed
+
+- README image and intra-doc links now use absolute GitHub URLs so they
+  render correctly on PyPI (cover image, bilingual cross-link,
+  `examples/`, `LICENSE`, `SECURITY.md`, `CONTRIBUTING.md`). The 0.1.0
+  release page on PyPI shows a broken cover image because PyPI does not
+  resolve relative paths against the source repository.
+
 ## [0.1.0] — 2026-05-12
 
 Initial public release.
@@ -44,5 +54,6 @@ This release ships against v1 of the public schema. New fields added by
 future backend releases land in each dataclass's `extra` dict — your code
 will keep working without an SDK upgrade.
 
-[Unreleased]: https://github.com/mylovelycodes/hkfilings-python/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/mylovelycodes/hkfilings-python/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/mylovelycodes/hkfilings-python/releases/tag/v0.1.1
 [0.1.0]: https://github.com/mylovelycodes/hkfilings-python/releases/tag/v0.1.0

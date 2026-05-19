@@ -1,6 +1,6 @@
 <!-- prettier-ignore -->
 <p align="center">
-  <img src="assets/cover.png" alt="hkfilings — turn HKEX annual report PDFs into source-traced JSON" width="720">
+  <img src="https://raw.githubusercontent.com/mylovelycodes/hkfilings-python/main/assets/cover.png" alt="hkfilings — turn HKEX annual report PDFs into source-traced JSON" width="720">
 </p>
 
 <h1 align="center">hkfilings · Python SDK for HKEX annual & interim reports</h1>
@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  <b>English</b> · <a href="README.zh-CN.md">中文</a><br>
+  <b>English</b> · <a href="https://github.com/mylovelycodes/hkfilings-python/blob/main/README.zh-CN.md">中文</a><br>
   <a href="#install">Install</a> · <a href="#quickstart">Quickstart</a> · <a href="#what-you-get-back">Data shape</a> · <a href="#cookbook">Cookbook</a> · <a href="#api-reference">API</a> · <a href="#plans--limits">Plans</a> · <a href="#faq">FAQ</a>
 </p>
 
@@ -86,7 +86,7 @@ for fact in report.facts:
   uncomment the block below so it renders right under the snippet:
 
   <p align="center">
-    <img src="assets/demo.gif" alt="hkfilings quickstart — 5 lines, source-traced facts" width="720">
+    <img src="https://raw.githubusercontent.com/mylovelycodes/hkfilings-python/main/assets/demo.gif" alt="hkfilings quickstart — 5 lines, source-traced facts" width="720">
   </p>
 -->
 
@@ -190,7 +190,7 @@ with open("baba_2026_facts.csv", "wb") as fh:
     fh.write(client.facts_csv(task.task_id))
 ```
 
-More runnable examples in [`examples/`](examples/).
+More runnable examples in [`examples/`](https://github.com/mylovelycodes/hkfilings-python/tree/main/examples).
 
 ## API reference
 
@@ -305,8 +305,8 @@ reset. `HKFilingsError` will include `status_code=429` and
 
 ## License
 
-[MIT](LICENSE). See [SECURITY.md](SECURITY.md) for vulnerability
-reporting, [CONTRIBUTING.md](CONTRIBUTING.md) to help out.
+[MIT](https://github.com/mylovelycodes/hkfilings-python/blob/main/LICENSE). See [SECURITY.md](https://github.com/mylovelycodes/hkfilings-python/blob/main/SECURITY.md) for vulnerability
+reporting, [CONTRIBUTING.md](https://github.com/mylovelycodes/hkfilings-python/blob/main/CONTRIBUTING.md) to help out.
 
 ---
 

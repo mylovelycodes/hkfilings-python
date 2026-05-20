@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] — 2026-05-20
+
+### Fixed
+
+- **Default `base_url` now points at the API host.** Earlier 0.1.x
+  defaulted to `https://hkfilings.app`, which is the static marketing
+  site on Cloudflare Pages, not the API. Any call made with the
+  default base would hit the SPA HTML fallback and the client would
+  raise on `response.json()` parse failure. 0.1.2 defaults to
+  `https://api.hkfilings.app`. The marketing apex still routes the
+  public API paths to the Worker, so explicitly setting
+  `base_url="https://hkfilings.app"` keeps working — but the new
+  default avoids a confusing first-call failure.
+- **`upload()` now sends the PDF as the raw request body**, with
+  metadata (`ticker` / `market` / `company_name` / `language` /
+  `fiscal_year`) on the query string. Earlier 0.1.x used
+  `multipart/form-data` (httpx `files=` + `data=`), which the
+  Cloudflare Worker stored verbatim into R2 — leaving a multipart-
+  wrapped blob there instead of a real PDF, and silently dropping
+  every form field. The downstream parser then failed with an opaque
+  error. The new contract matches the Worker's
+  `POST /v1/hk-tasks/upload` raw-body shape.
+
+### Added
+
+- `upload(..., language=, fiscal_year=)` parameters, matching the
+  query-string contract the Worker exposes.
+
 ## [0.1.1] — 2026-05-19
 
 ### Fixed

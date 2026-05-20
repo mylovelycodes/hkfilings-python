@@ -54,29 +54,40 @@ def test_analyze_posts_ticker_year_force(
     assert b'"language":"en"' in body
 
 
-def test_upload_sends_multipart(
+def test_upload_sends_raw_pdf_body(
     httpx_mock,
     client: HKFilingsClient,
     tmp_path,  # type: ignore[no-untyped-def]
 ) -> None:
+    """0.1.2+ contract: PDF bytes in the body, metadata in query string.
+
+    Earlier 0.1.x sent ``multipart/form-data``, which the Cloudflare
+    Worker stored verbatim into R2 — corrupting the PDF and dropping
+    the metadata (because the Worker reads params off the query string,
+    not the form fields). See the 0.1.2 CHANGELOG entry.
+    """
     pdf = tmp_path / "report.pdf"
-    pdf.write_bytes(b"%PDF-1.4\nstub\n")
+    pdf_bytes = b"%PDF-1.4\nstub\n"
+    pdf.write_bytes(pdf_bytes)
 
     httpx_mock.add_response(
         method="POST",
-        url=f"{TEST_BASE_URL}/v1/hk-tasks/upload",
+        url=httpx.URL(
+            f"{TEST_BASE_URL}/v1/hk-tasks/upload",
+            params={"market": "HK", "ticker": "9988", "company_name": "Alibaba"},
+        ),
         json={"task_id": "tsk_3", "status": "pending"},
     )
     task = client.upload(file_path=pdf, ticker="9988", company_name="Alibaba")
     assert task.task_id == "tsk_3"
 
     req = httpx_mock.get_request()
-    ctype = req.headers["content-type"]
-    assert ctype.startswith("multipart/form-data")
-    raw = req.read()
-    assert b"report.pdf" in raw
-    assert b"9988" in raw
-    assert b"Alibaba" in raw
+    assert req.headers["content-type"] == "application/pdf"
+    assert req.read() == pdf_bytes
+    qp = req.url.params
+    assert qp["ticker"] == "9988"
+    assert qp["company_name"] == "Alibaba"
+    assert qp["market"] == "HK"
 
 
 def test_upload_raises_on_missing_file(

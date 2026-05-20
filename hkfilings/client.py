@@ -28,8 +28,15 @@ from .types import (
     Task,
 )
 
-DEFAULT_BASE_URL = "https://hkfilings.app"
-"""Public managed endpoint. Override via ``base_url=`` to self-host."""
+DEFAULT_BASE_URL = "https://api.hkfilings.app"
+"""Public managed API endpoint. Override via ``base_url=`` to self-host.
+
+History: 0.1.0 and 0.1.1 defaulted to ``https://hkfilings.app`` — the
+static marketing site. Any call against that host hit the SPA HTML
+fallback and failed to parse as JSON. 0.1.2+ defaults to the Worker
+host (``api.hkfilings.app``). The apex still works because the Worker
+also serves ``hkfilings.app/v1/*``, but the API host is the right
+default."""
 
 _VALID_SCHEMA_NAMES: frozenset[str] = frozenset({
     "financial_fact",
@@ -186,17 +193,39 @@ class HKFilingsClient:
         ticker: str | None = None,
         company_name: str | None = None,
         market: str = "HK",
+        language: str | None = None,
+        fiscal_year: str | None = None,
     ) -> Task:
-        """Upload a local PDF for parsing."""
+        """Upload a local PDF for parsing.
+
+        The managed endpoint accepts the PDF as the raw request body
+        with ``Content-Type: application/pdf``; metadata (``ticker`` /
+        ``market`` / ``company_name`` / ``language`` / ``fiscal_year``)
+        rides on the query string. Earlier 0.1.x releases sent
+        ``multipart/form-data`` which the Cloudflare Worker stored
+        verbatim into R2, corrupting the PDF; 0.1.2+ uses the raw-body
+        contract the Worker actually expects.
+        """
         path = Path(file_path)
+        params: dict[str, str] = {"market": market}
+        if ticker:
+            params["ticker"] = ticker
+        if company_name:
+            params["company_name"] = company_name
+        if language:
+            params["language"] = language
+        if fiscal_year:
+            params["fiscal_year"] = fiscal_year
         with path.open("rb") as fh:
-            files = {"file": (path.name, fh, "application/pdf")}
-            data: dict[str, Any] = {"market": market}
-            if ticker:
-                data["ticker"] = ticker
-            if company_name:
-                data["company_name"] = company_name
-            return Task.from_dict(self._json("POST", "/v1/hk-tasks/upload", files=files, data=data))
+            return Task.from_dict(
+                self._json(
+                    "POST",
+                    "/v1/hk-tasks/upload",
+                    params=params,
+                    content=fh.read(),
+                    headers={"content-type": "application/pdf"},
+                )
+            )
 
     def task_status(self, task_id: str) -> Task:
         """Return the current status of a task."""
